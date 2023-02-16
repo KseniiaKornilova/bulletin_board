@@ -4,7 +4,7 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.contrib import messages
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -116,6 +116,29 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
 
+
+# Реализация запроса письма для сброса пароля 
+class PasswordResetUserView(PasswordResetView):
+    template_name = 'main/password_reset.html'
+    subject_template_name = 'email/password_reset_subject.txt'
+    email_template_name = 'email/password_reset_body.txt'
+    success_url = reverse_lazy('main:password_reset_done')
+
+
+# Вывод страницы с сообщением об успешной отправке письма для сброса пароля
+class PasswordResetUserDoneView(PasswordResetDoneView):
+    template_name = 'main/password_reset_done.html'
+
+
+# Реализация сброса пароля
+class PasswordResetConfirmUserView(PasswordResetConfirmView):
+    template_name = 'main/password_reset_confirm.html'
+    success_url = reverse_lazy('main:password_reset_complete')
+
+
+# Вывод страницы с сообщением об успешном сбросе пароля
+class PasswordResetCompleteUserView(PasswordResetCompleteView):
+    template_name = 'main/password_reset_complete.html'
 
         
 

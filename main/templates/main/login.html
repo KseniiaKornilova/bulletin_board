@@ -1,4 +1,4 @@
-<!-- Шалон входа на сайт -->
+<!-- Шаблон входа на сайт -->
 {% extends 'layout/basic.html' %}  
 {% load bootstrap4 %}  
 
@@ -15,5 +15,6 @@
     <input type="hidden" name="next" value="{{ next }}">
     {% buttons submit='Войти' %} {%endbuttons %} 
 </form>
+<a href="{% url 'main:password_reset' %}">Не помните пароль?</a>
 {% endif %} 
 {% endblock %} 

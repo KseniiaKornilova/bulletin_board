@@ -14,6 +14,10 @@ urlpatterns = [
     path('accounts/profile/', views.profile, name='profile'), 
     path('accounts/logout/', views.BBLogoutView.as_view(), name='logout'),
     path('accounts/password/change/', views.BBPasswordChangeView.as_view(), name='password_change'),
+    path('accounts/password_reset/', views.PasswordResetUserView.as_view(), name='password_reset'),
+    path('accounts/password_reset/done/', views.PasswordResetUserDoneView.as_view(), name='password_reset_done'),
+    path('accounts/reset/<uidb64>/<token>/', views.PasswordResetConfirmUserView.as_view(), name='password_reset_confirm'),
+    path('accounts/reset/done/', views.PasswordResetCompleteUserView.as_view(), name='password_reset_complete'),
     
 ]
 
