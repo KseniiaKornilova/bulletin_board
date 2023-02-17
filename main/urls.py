@@ -4,6 +4,7 @@ from main import views
 app_name = 'main'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<int:pk>/', views.by_rubric, name='by_rubric'),
     path('<str:page>/', views.other_page, name='other'),
     path('accounts/register/activate/<str:sign>/', views.user_activate, name='register_activate'),
     path('accounts/register/done', views.RegisterDoneView.as_view(), name='register_done'),

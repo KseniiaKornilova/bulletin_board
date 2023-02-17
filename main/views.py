@@ -140,5 +140,9 @@ class PasswordResetConfirmUserView(PasswordResetConfirmView):
 class PasswordResetCompleteUserView(PasswordResetCompleteView):
     template_name = 'main/password_reset_complete.html'
 
+
+def by_rubric(request, pk):
+    pass 
+
         
 

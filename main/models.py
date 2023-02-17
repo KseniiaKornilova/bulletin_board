@@ -24,7 +24,7 @@ class SuperRubricManager(models.Manager):
         return super().get_queryset().filter(super_rubric__isnull=True)
 
 class SuperRubric(Rubric):
-    object = SuperRubricManager()
+    objects = SuperRubricManager()
 
     def __str__(self):
         return self.name
@@ -41,7 +41,7 @@ class SubRubricManager(models.Manager):
         return super().get_queryset().filter(super_rubric__isnull=False)
 
 class SubRubric(Rubric):
-    object = SubRubricManager()
+    objects = SubRubricManager()
 
     def __str__(self):
         return '%s - %s' % (self.super_rubric, self.name)
