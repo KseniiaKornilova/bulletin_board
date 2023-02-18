@@ -2,6 +2,8 @@ from django.template.loader import render_to_string
 from django.core.signing import Signer
 
 from bulletin_board.settings import ALLOWED_HOSTS
+from datetime import datetime
+from os.path import splitext
 
 # Отправка писем с оповещениями об активации 
 signer = Signer()
@@ -14,3 +16,7 @@ def send_activation_notification(user):
     subject = render_to_string('email/activation_letter_subject.txt', context)
     body_text = render_to_string('email/activation_letter_body.txt', context)
     user.email_user(subject, body_text)
+
+
+def get_timestamp_path(instance, filename):
+    return '%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
