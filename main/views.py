@@ -23,7 +23,9 @@ from .utilities import signer
 # Create your views here.
 # Вывод главной страницы
 def index(request):
-    return render(request, 'main/index.html')
+    bbs = Bb.objects.filter(is_active=True)[:10]
+    context = {'bbs': bbs}
+    return render(request, 'main/index.html', context)
 
 # Вывод страницы "о сайте"
 def other_page(request, page):
