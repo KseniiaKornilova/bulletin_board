@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AdvUser, SuperRubric, SubRubric, Bb, AdditionalImage
+from .models import AdvUser, SuperRubric, SubRubric, Bb, AdditionalImage, Comment
 from .utilities import send_activation_notification
 from .forms import SubRubricForm
 
@@ -56,3 +56,10 @@ class BbAdmin(admin.ModelAdmin):
     inlines = (AdditionalImageInline,)
 
 admin.site.register(Bb, BbAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('bb', 'author', 'content')
+    fields = ('bb', 'author', 'content', 'is_active', 'created_at')
+    ordering = ('bb', 'created_at')
+
+admin.site.register(Comment, CommentAdmin)
