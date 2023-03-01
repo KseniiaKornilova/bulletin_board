@@ -39,7 +39,7 @@ class SuperRubric(Rubric):
     class Meta:
         proxy = True
         ordering = ('order', 'name')
-        verbose_name = 'Надрубрику'
+        verbose_name = 'Надрубрика'
         verbose_name_plural = 'Надрубрики'
 
 

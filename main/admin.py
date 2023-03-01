@@ -59,7 +59,7 @@ admin.site.register(Bb, BbAdmin)
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('bb', 'author', 'content')
-    fields = ('bb', 'author', 'content', 'is_active', 'created_at')
+    fields = ('bb', 'author', 'content', 'is_active')
     ordering = ('bb', 'created_at')
 
 admin.site.register(Comment, CommentAdmin)

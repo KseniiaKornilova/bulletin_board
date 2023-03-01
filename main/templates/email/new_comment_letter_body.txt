@@ -1,8 +1,8 @@
 Уважаемый пользователь {{ author.username }}
 
 Под вашим объявлением был оставлен комментарий. 
-Для просмотра перейдите по ссыле: 
-{{ host }}{% url 'main:detail' rubric.pk=comment.bb.rubric pk= comment.bb%} 
+Для просмотра перейдите по ссылке:
+{{ host }}{% url 'main:detail' rubric_pk=comment.bb.rubric.pk pk=comment.bb.pk %} 
 
 До свидания! 
 С уважением, администрация сайта "Доска объявлений" 
